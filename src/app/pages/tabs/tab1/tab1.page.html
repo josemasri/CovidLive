@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Cifras actuales COVID19
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center"><i class="fas fa-globe-americas"></i> Mundo</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content class="ion-text-center" *ngIf="res" >
+      
+      <h3>Actualizado {{date | date:'short'}}</h3>
+      
+      <p>Casos Confirmados</p>
+      <ion-text color="warning">
+        <h1 [countUp]="res.cases">0</h1>
+      </ion-text>
+
+      <p>Muertes: </p>
+      <ion-text color="danger">
+        <h1 [countUp]="res.deaths">0</h1>
+      </ion-text>
+      
+      <p>Recuperados: </p>
+      <ion-text color="success">
+        <h1 [countUp]="res.recovered">0</h1>
+      </ion-text>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center"> <img width="30px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/1920px-Flag_of_Mexico.svg.png" alt=""> México</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content class="ion-text-center" *ngIf="res2" >
+      <h3>Actualizado {{date | date:'short'}}</h3>
+      
+      
+      <p>Casos Confirmados</p>
+      <ion-text color="warning">
+        <h1 [countUp]="res2.cases">0</h1>
+      </ion-text>
+
+      <p>Nuevos Casos Confirmados Hoy</p>
+      <ion-text color="secondary">
+        <h1 [countUp]="res2.todayCases">0</h1>
+      </ion-text>
+
+      <p>Muertes en total: </p>
+      <ion-text color="danger">
+        <h1 [countUp]="res2.deaths">0</h1>
+      </ion-text>
+
+      <p>Muertes Nuevas Hoy: </p>
+      <ion-text color="danger">
+        <h1 [countUp]="res2.todayDeaths">0</h1>
+      </ion-text>
+      
+      <p>Recuperados: </p>
+      <ion-text color="success">
+        <h1 [countUp]="res2.recovered">0</h1>
+      </ion-text>
+
+      <p>Activos: </p>
+      <ion-text color="warning">
+        <h1 [countUp]="res2.active">0</h1>
+      </ion-text>
+
+
+      <p>En Situación Crítica: </p>
+      <ion-text color="danger">
+        <h1 [countUp]="res2.critical">0</h1>
+      </ion-text>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

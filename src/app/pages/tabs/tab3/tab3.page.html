@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Noticias Actuales
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+</ion-refresher>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Noticias</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card *ngFor="let noticia of noticias" (click)="openNoticia(noticia.url)">
+    <ion-card-header>
+      <ion-card-subtitle>Funete: {{noticia.source.name}}</ion-card-subtitle>
+      <ion-card-title>{{noticia.title}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <img [src]="noticia.urlToImage" alt="">
+      {{noticia.content.split('[')[0]}}
+      <!-- <a [href]="noticia.url"><ion-button expand="full" fill="solid">Ver Más</ion-button></a> -->
+    </ion-card-content>
+  </ion-card>
+
+  <ion-infinite-scroll threshold="50px" (ionInfinite)="loadMoreNews($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="crescent"
+      loadingText="Cargando más noticias...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
